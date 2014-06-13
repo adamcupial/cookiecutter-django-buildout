@@ -8,23 +8,27 @@ Installation:
 
 1. Install cookiecutter (https://github.com/audreyr/cookiecutter)
 
-.. code-block::
-    pip install cookiecutter
+.. code-block:: bash
+
+    $ pip install cookiecutter
 
 2. build the template
 
-.. code-block::
-    cookiecutter https://github.com/adamcupial/cookiecutter-django-buildout
+.. code-block:: bash
+
+    $ cookiecutter https://github.com/adamcupial/cookiecutter-django-buildout
 
 3. go to your project's directory and do
 
-.. code-block::
-    make install
+.. code-block:: bash
+
+    $ make install
 
 4. to update or install production use:
 
-.. code-block::
-    make dev/prod
+.. code-block:: bash
+
+    $ make dev/prod
 
 Settings:
 ==========
