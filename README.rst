@@ -6,13 +6,25 @@ django with buildout template skeleton based on cookiecutter
 Installation:
 =============
 
- 1. Install cookiecutter (https://github.com/audreyr/cookiecutter)
+1. Install cookiecutter (https://github.com/audreyr/cookiecutter)
 
+.. code-block::
     pip install cookiecutter
 
- 2. build the template
+2. build the template
 
+.. code-block::
     cookiecutter https://github.com/adamcupial/cookiecutter-django-buildout
+
+3. go to your project's directory and do
+
+.. code-block::
+    make install
+
+4. to update or install production use:
+
+.. code-block::
+    make dev/prod
 
 Settings:
 ==========
