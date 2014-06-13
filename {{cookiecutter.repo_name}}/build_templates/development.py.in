@@ -5,7 +5,7 @@ TEMPLATE_DEBUG = DEBUG
 DATABASES = {
     'default': {
         'ENGINE':'${deploy-config:database-engine}',
-        'NAME': '${deploy-config:database-name}',
+        'NAME': {% if cookiecutter.database_engine == 'sqlite' %}os.path.join(PROJECT_ROOT, 'sqlite3.db'),{% else %}'${deploy-config:database-name}',{% endif %}
         'USER': '${deploy-config:database-user}',
         'PASSWORD': '${deploy-config:database-password}',
         'HOST': '${deploy-config:database-host}',

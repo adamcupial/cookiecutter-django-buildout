@@ -27,8 +27,7 @@ files = ${buildout:directory}/etc/*-supervisor.conf
 
 [program:{{ cookiecutter.project_name }}]
 directory = ${buildout:directory}
-command = ${buildout:directory}/bin/django-${deploy-config:env} runfcgi daemonize=false method=threaded host=127.0.0.1 port=${deploy-config:django_fcgi_port} minspare=1 maxspare=2 maxrequests=1000 maxchildren=20
+command = ${buildout:directory}/bin/uwsgi --xml ${buildout:directory}/parts/uwsgi/uwsgi.xml
 autostart = true
-autorestart = true              ; retstart at unexpected quit (default: true)
-startsecs = 2                  ; number of secs prog must stay running (def. 1)
-startretries = 3                ; max # of serial start failures (default 3)
+autorestart = true
+stopsignal=INT

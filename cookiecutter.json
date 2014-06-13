@@ -4,6 +4,7 @@
   "author_name": "Joe Doe",
   "author_email": "noone@nowhere.com",
   "description": "Short description of the project",
+  "domain": "nowhere.com",
   "migration_engine": "south",
   "admin_engine": "grappelli",
   "django_version": 1.6,
@@ -12,5 +13,7 @@
   "database_user": "",
   "database_password": "",
   "database_host": "127.0.0.1",
-  "database_port": ""
+  "database_port": "",
+  "use_compass": "yes",
+  "use_bootstrap": "yes"
 }

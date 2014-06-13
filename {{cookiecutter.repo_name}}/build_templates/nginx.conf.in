@@ -1,0 +1,30 @@
+server {
+    listen   80;
+    server_name {{ cookiecutter.domain }};
+
+    location /static {
+        root ${buildout:directory}/{{ cookiecutter.project_name }};
+        expires max;
+    }
+
+    location /media {
+        root ${buildout:directory}/{{ cookiecutter.project_name }};
+        expires max;
+    }
+
+    location / {
+        if (-f ${buildout:directory}/maintenance.html) {
+            return 503;
+        }
+
+        uwsgi_pass  127.0.0.1:${deploy-config:uwsgi-port};
+        include     uwsgi_params;
+    }
+
+    error_page 503 @maintenance;
+
+    location @maintenance {
+        root ${buildout:directory};
+        rewrite ^(.*)$ /maintenance.html break;
+    }
+}
