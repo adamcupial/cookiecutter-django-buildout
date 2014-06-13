@@ -1,0 +1,34 @@
+[unix_http_server]
+file = ${buildout:directory}/var/supervisord.sock
+
+; for unix/linux you can use files instead of TCP ports
+; comment [inet_http_server] and uncomment [unix_http_server] section
+; and change [supervisorctl] section to use file socket than tcp
+;[unix_http_server]
+;file = ${buildout:directory}/var/supervisord.sock
+
+[supervisord]
+logfile = ${buildout:directory}/var/log/supervisord.log
+logfile_maxbytes = 50MB
+logfile_backups = 10
+loglevel = info
+pidfile = ${buildout:directory}/var/supervisord.pid
+nodaemon = false
+
+[supervisorctl]
+serverurl = unix://${buildout:directory}/var/supervisord.sock
+prompt = django
+
+[rpcinterface:supervisor]
+supervisor.rpcinterface_factory=supervisor.rpcinterface:make_main_rpcinterface
+
+[include]
+files = ${buildout:directory}/etc/*-supervisor.conf
+
+[program:{{ cookiecutter.project_name }}]
+directory = ${buildout:directory}
+command = ${buildout:directory}/bin/django-${deploy-config:env} runfcgi daemonize=false method=threaded host=127.0.0.1 port=${deploy-config:django_fcgi_port} minspare=1 maxspare=2 maxrequests=1000 maxchildren=20
+autostart = true
+autorestart = true              ; retstart at unexpected quit (default: true)
+startsecs = 2                  ; number of secs prog must stay running (def. 1)
+startretries = 3                ; max # of serial start failures (default 3)

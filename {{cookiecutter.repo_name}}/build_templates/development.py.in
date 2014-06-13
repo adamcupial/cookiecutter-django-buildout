@@ -1,0 +1,17 @@
+from {{ cookiecutter.project_name }}.settings import *
+DEBUG = True
+TEMPLATE_DEBUG = DEBUG
+
+DATABASES = {
+    'default': {
+        'ENGINE':'${deploy-config:database-engine}',
+        'NAME': '${deploy-config:database-name}',
+        'USER': '${deploy-config:database-user}',
+        'PASSWORD': '${deploy-config:database-password}',
+        'HOST': '${deploy-config:database-host}',
+        'PORT': '${deploy-config:database-port}',
+        {% if cookiecutter.django_version >= 1.6 %}'CONN_MAX_AGE': None,{% endif %}
+        }
+}
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
