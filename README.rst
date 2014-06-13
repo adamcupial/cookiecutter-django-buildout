@@ -31,3 +31,5 @@ Settings:
   * database_password, default: ''
   * database_host, default: ''
   * database_port, default: ''
+  * use_compass, default: 'yes'
+  * use_bootstrap, default: 'yes'
