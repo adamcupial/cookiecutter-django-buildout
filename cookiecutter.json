@@ -1,0 +1,7 @@
+{
+  "project_name": "title of your project",
+  "repo_name": "used for describing the directory structure",
+  "author_name": "Joe Doe",
+  "email": "noone@nowhere.com",
+  "description": "Short description of the project"
+}
