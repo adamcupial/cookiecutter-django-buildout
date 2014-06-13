@@ -33,3 +33,8 @@ Settings:
   * database_port, default: ''
   * use_compass, default: 'yes'
   * use_bootstrap, default: 'yes'
+
+Aknowledgements:
+================
+
+This tool is based on Cookiecutter (https://github.com/audreyr/cookiecutter) and django-buildout-template (https://github.com/onjin/django-buildout-template)
