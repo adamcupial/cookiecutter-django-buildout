@@ -3,6 +3,11 @@ cookiecutter-django-buildout
 
 django with buildout template skeleton based on cookiecutter
 
+Author:
+=======
+
+Adam Cupiał
+
 Installation:
 =============
 
@@ -18,17 +23,8 @@ Installation:
 
     $ cookiecutter https://github.com/adamcupial/cookiecutter-django-buildout
 
-3. go to your project's directory and do
+3. go to your project's directory and read README.rst file
 
-.. code-block:: bash
-
-    $ make install
-
-4. to update or install production use:
-
-.. code-block:: bash
-
-    $ make dev/prod
 
 Settings:
 ==========
@@ -42,11 +38,7 @@ Settings:
   * admin_engine, default: 'grappelli', one of 'grappelli', 'default', 'none'
   * django_version, default: '1.6'
   * database_engine, default: 'sqlite', one of 'sqlite', 'postgres', 'mysql'
-  * database_name, default: ''
-  * database_user, default: ''
-  * database_password, default: ''
-  * database_host, default: ''
-  * database_port, default: ''
+  * use_env_for_configuration, default: 'yes'
   * use_compass, default: 'yes'
   * use_bootstrap, default: 'yes'
 

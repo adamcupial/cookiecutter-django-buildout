@@ -11,23 +11,29 @@ domain = localhost
 
 {% if cookiecutter.database_engine == 'sqlite' %}
 database-engine = django.db.backends.sqlite3
+{% if cookiecutter.use_env_for_configuration != 'yes' %}
 database-name =
 database-user =
 database-password =
 database-host =
 database-port =
+{% endif %}
 {% elif cookiecutter.database_engine == 'postgres' %}
 database-engine = django.db.backends.postgresql_psycopg
+{% if cookiecutter.use_env_for_configuration != 'yes' %}
 database-name =
 database-user =
 database-password =
 database-host =
 database-port =
+{% endif %}
 {% elif cookiecutter.database_engine == 'mysql' %}
 database-engine = django.db.backends.mysql
+{% if cookiecutter.use_env_for_configuration != 'yes' %}
 database-name =
 database-user =
 database-password =
 database-host =
 database-port =
+{% endif %}
 {% endif %}

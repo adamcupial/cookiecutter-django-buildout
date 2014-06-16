@@ -9,6 +9,7 @@
   "admin_engine": "grappelli",
   "django_version": 1.6,
   "database_engine": "sqlite",
+  "use_env_for_configuration": "yes",
   "use_compass": "yes",
   "use_bootstrap": "yes"
 }

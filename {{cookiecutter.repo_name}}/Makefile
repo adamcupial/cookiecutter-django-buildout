@@ -1,5 +1,5 @@
 .DEFAULT_GOAL = usage
-.PHONY = prod dev clean dist
+.PHONY = prod dev clean dist install install_prod
 
 usage:
 	@echo
@@ -23,7 +23,6 @@ system:
 	@mkdir -p parts
 	@mkdir -p develop-eggs
 	@mkdir -p project_static
-	if [ ! -f local.cfg && -f local.cfg-dist]; then cp local.cfg-dist local.cfg
 
 
 bootstrap.py :
@@ -57,6 +56,15 @@ compile:
 	python -c 'import compileall;  compileall.compile_dir("./{{ cookiecutter.project_name }}/", force=True, quiet=True);'
 
 install: dev
+{% if cookiecutter.use_compass == 'yes' %}
+	bin/compass create -s expanded {% if cookiecutter.use_bootstrap == 'yes' %}-r bootstrap-sass --using bootstrap{% else %}--bare{% endif %} --sass-dir=sass --css-dir project_static/css --javascripts-dir project_static/js --fonts-dir project_static/fonts --images-dir project_static/images --no-line-comments --relative-assets
+{% endif %}
+	bin/django syncdb
+{% if cookiecutter.migration_engine == 'south' %}
+	bin/django migrate
+{% endif %}
+
+install_prod: prod
 {% if cookiecutter.use_compass == 'yes' %}
 	bin/compass create -s expanded {% if cookiecutter.use_bootstrap == 'yes' %}-r bootstrap-sass --using bootstrap{% else %}--bare{% endif %} --sass-dir=sass --css-dir project_static/css --javascripts-dir project_static/js --fonts-dir project_static/fonts --images-dir project_static/images --no-line-comments --relative-assets
 {% endif %}

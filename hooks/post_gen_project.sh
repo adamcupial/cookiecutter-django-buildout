@@ -7,6 +7,6 @@ echo
 echo "************* Build finished, start working! **************"
 echo "1. cd to your project dir"
 echo "2. cp local.cfg-dist to local.cfg (git-ignored by default)"
-echo "3. edit local.cfg-dist and set up database"
-echo "4. make install"
+echo "3. edit local.cfg and change / set your settings"
+echo "4. make install (or install_prod)"
 echo

@@ -1,15 +1,24 @@
 from {{ cookiecutter.project_name }}.settings import *
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
+import os
 
 DATABASES = {
     'default': {
         'ENGINE':'${deploy-config:database-engine}',
+        {% if cookiecutter.use_env_for_configuration == 'yes' %}
+        'NAME': os.environ['DATABASE_NAME'],
+        'USER': os.environ['DATABASE_USER'],
+        'PASSWORD': os.environ['DATABASE_PASSWORD'],
+        'HOST': os.environ['DATABASE_HOST'],
+        'PORT': os.environ['DATABASE_PORT'],
+        {% else %}
         'NAME': {% if cookiecutter.database_engine == 'sqlite' %}os.path.join(PROJECT_ROOT, 'sqlite3.db'),{% else %}'${deploy-config:database-name}',{% endif %}
         'USER': '${deploy-config:database-user}',
         'PASSWORD': '${deploy-config:database-password}',
         'HOST': '${deploy-config:database-host}',
         'PORT': '${deploy-config:database-port}',
+        {% endif %}
         {% if cookiecutter.django_version >= 1.6 %}'CONN_MAX_AGE': None,{% endif %}
         }
 }
