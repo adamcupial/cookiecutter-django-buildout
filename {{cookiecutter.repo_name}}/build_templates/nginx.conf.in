@@ -1,6 +1,6 @@
 server {
     listen   80;
-    server_name {{ cookiecutter.domain }};
+    server_name ${deploy-config:domain};
 
     location /static {
         root ${buildout:directory}/{{ cookiecutter.project_name }};

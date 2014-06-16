@@ -23,6 +23,7 @@ system:
 	@mkdir -p parts
 	@mkdir -p develop-eggs
 	@mkdir -p project_static
+	if [ ! -f local.cfg && -f local.cfg-dist]; then cp local.cfg-dist local.cfg
 
 
 bootstrap.py :

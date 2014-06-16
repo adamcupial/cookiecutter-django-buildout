@@ -9,11 +9,6 @@
   "admin_engine": "grappelli",
   "django_version": 1.6,
   "database_engine": "sqlite",
-  "database_name": "",
-  "database_user": "",
-  "database_password": "",
-  "database_host": "127.0.0.1",
-  "database_port": "",
   "use_compass": "yes",
   "use_bootstrap": "yes"
 }

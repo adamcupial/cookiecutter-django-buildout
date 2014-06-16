@@ -1,0 +1,33 @@
+[buildout]
+
+[deploy-config]
+
+; start apps when supervisord is started
+autostart_apps = true
+; uwsgi-port to run on
+uwsgi-port = 8002
+; domain for nginx/django settings
+domain = localhost
+
+{% if cookiecutter.database_engine == 'sqlite' %}
+database-engine = django.db.backends.sqlite3
+database-name =
+database-user =
+database-password =
+database-host =
+database-port =
+{% elif cookiecutter.database_engine == 'postgres' %}
+database-engine = django.db.backends.postgresql_psycopg
+database-name =
+database-user =
+database-password =
+database-host =
+database-port =
+{% elif cookiecutter.database_engine == 'mysql' %}
+database-engine = django.db.backends.mysql
+database-name =
+database-user =
+database-password =
+database-host =
+database-port =
+{% endif %}
