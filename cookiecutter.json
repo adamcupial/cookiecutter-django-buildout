@@ -11,5 +11,5 @@
   "database_engine": "sqlite",
   "use_env_for_configuration": "yes",
   "use_compass": "yes",
-  "use_bootstrap": "yes"
+  "use_bootstrap": "no"
 }

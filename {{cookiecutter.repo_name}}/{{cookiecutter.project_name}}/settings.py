@@ -88,6 +88,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
 )
 
+
 ROOT_URLCONF = '{{ cookiecutter.project_name }}.urls'
 
 TEMPLATE_DIRS = (
@@ -106,7 +107,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     {% if cookiecutter.admin_engine == 'grappelli' %}'grappelli',{% endif %}
     {% if cookiecutter.admin_engine == 'grappelli' or cookiecutter.admin_engine == 'default' %}'django.contrib.admin',{% endif %}
-    {% if cookiecutter.migration_engine == 'south' %}'south',{% endif %}
+    {% if cookiecutter.migration_engine == 'south' and cookiecutter.django_version < 1.7 %}'south',{% endif %}
     'django_extensions',
 )
 
